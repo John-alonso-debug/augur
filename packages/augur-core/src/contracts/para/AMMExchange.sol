@@ -23,6 +23,7 @@ contract AMMExchange is ERC20 {
 
     function initialize(IMarket _market, IParaShareToken _shareToken, uint256 _fee) public {
         require(cash == ICash(0)); // can only initialize once
+        require(_fee <= 1000); // fee must be [0,1000]
 
         cash = _shareToken.cash();
         shareToken = _shareToken;
