@@ -12,7 +12,8 @@ def test_amm(contractsFixture, market, cash):
     shareToken = contractsFixture.getShareToken()
 
     # Create AMM
-    amm = contractsFixture.upload('../src/contracts/para/AMMExchange.sol', constructorArgs=[market.address, shareToken.address])
+    amm = contractsFixture.upload('../src/contracts/para/AMMExchange.sol')
+    amm.initialize(market.address, shareToken.address)
 
     # Add liquidity
     cash.faucet(100000 * 10**18)
