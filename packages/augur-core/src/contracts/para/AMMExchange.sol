@@ -180,8 +180,8 @@ contract AMMExchange is ERC20 {
         cash.transfer(msg.sender, _cashPayout);
 	}
 
-	function quadratic(int256 _a, int256 _b, int256 _c, uint256 _maximum) public returns (uint256) {
-		int256 _piece = SafeMathInt256.sqrt(_b*_b - (_a.mul(_b).mul(4)));
+	function quadratic(int256 _a, int256 _b, int256 _c, uint256 _maximum) internal pure returns (uint256) {
+		int256 _piece = SafeMathInt256.sqrt(_b*_b - (_a.mul(_c).mul(4)));
 		int256 _resultPlus = (-_b + _piece) / (2 * _a);
 		int256 _resultMinus = (-_b - _piece) / (2 * _a);
 		// TODO choose correct abs solution based on maximum

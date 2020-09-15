@@ -5,7 +5,7 @@ import 'ROOT/para/interfaces/IParaShareToken.sol';
 import 'ROOT/para/AMMExchange.sol';
 import 'ROOT/reporting/IMarket.sol';
 
-contract AMMFactory {
+contract AMMFactory is CloneFactory2 {
     // market -> para -> amm
     AMMExchange internal proxyToClone;
 
@@ -14,7 +14,7 @@ contract AMMFactory {
     }
 
     function addAMM(IMarket _market, IParaShareToken _para, uint256 _fee) external returns (AMMExchange) {
-        address _amm = AMMExchange(createClone2(address(proxyToClone), salt(_market, _para)));
+        AMMExchange _amm = AMMExchange(createClone2(address(proxyToClone), salt(_market, _para)));
         _amm.initialize(_market, _para, _fee);
         return _amm;
     }
@@ -28,7 +28,7 @@ contract AMMFactory {
             )))));
     }
 
-    function salt(address _market, address _para) pure returns (uint256) {
+    function salt(IMarket _market, IParaShareToken _para) public pure returns (uint256) {
         return uint256(keccak256(abi.encodePacked(_market, _para)));
     }
 }

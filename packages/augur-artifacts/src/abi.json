@@ -21573,6 +21573,21 @@
 			"inputs": [
 				{
 					"internalType": "uint256",
+					"name": "_minCashPayout",
+					"type": "uint256"
+				}
+			],
+			"name": "exitAll",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "uint256",
 					"name": "_setsToSell",
 					"type": "uint256"
 				},
@@ -21583,6 +21598,36 @@
 				}
 			],
 			"name": "exitPosition",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_yesShares",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_noShares",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_invalidShares",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_minCashPayout",
+					"type": "uint256"
+				}
+			],
+			"name": "exitPositionShares",
 			"outputs": [],
 			"payable": false,
 			"stateMutability": "nonpayable",
@@ -21904,6 +21949,134 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	],
+	"AMMFactory": [
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_proxyToClone",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "contract IMarket",
+					"name": "_market",
+					"type": "address"
+				},
+				{
+					"internalType": "contract IParaShareToken",
+					"name": "_para",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_fee",
+					"type": "uint256"
+				}
+			],
+			"name": "addAMM",
+			"outputs": [
+				{
+					"internalType": "contract AMMExchange",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "target",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "salt",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "creator",
+					"type": "address"
+				}
+			],
+			"name": "clone2Address",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "result",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "pure",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"internalType": "contract IMarket",
+					"name": "_market",
+					"type": "address"
+				},
+				{
+					"internalType": "contract IParaShareToken",
+					"name": "_para",
+					"type": "address"
+				}
+			],
+			"name": "getAMM",
+			"outputs": [
+				{
+					"internalType": "contract AMMExchange",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"internalType": "contract IMarket",
+					"name": "_market",
+					"type": "address"
+				},
+				{
+					"internalType": "contract IParaShareToken",
+					"name": "_para",
+					"type": "address"
+				}
+			],
+			"name": "salt",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "pure",
 			"type": "function"
 		}
 	],
