@@ -16,13 +16,14 @@ def test_amm(contractsFixture, market, cash):
 
     shareToken = contractsFixture.getShareToken()
 
+    fee = 3 # 3/1000
+
     # Create factory
     cloneableAMM = contractsFixture.upload('../src/contracts/para/AMMExchange.sol')
-    factory = contractsFixture.upload('../src/contracts/para/AMMFactory.sol', constructorArgs=[cloneableAMM.address])
+    factory = contractsFixture.upload('../src/contracts/para/AMMFactory.sol', constructorArgs=[cloneableAMM.address, fee])
 
     # Create AMM
-    fee = 3 # 3/1000
-    ammAddress = factory.addAMM(market.address, shareToken.address, fee)
+    ammAddress = factory.addAMM(market.address, shareToken.address)
     amm = contractsFixture.applySignature("AMMExchange", ammAddress)
 
     # Add liquidity
